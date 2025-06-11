@@ -690,6 +690,17 @@ function() {
             set: (e, t, n) => (["timeout", "mapping", "down", "options", "IDLE", "opacity", "やねフ子スサ五ミフり", "control", "width", "height"].includes(t) ? e[i] = n : e[t] = n,
             !0)
         };
+        // AutoSpike
+        // let spikeID = null;
+        // if (FT.inv.n[ItemType.REIDITE_SPIKE]) spikeID = ItemType.REIDITE_SPIKE;
+        // if (FT.inv.n[ItemType.GOLD_SPIKE]) spikeID = ItemType.GOLD_SPIKE;
+        // if (spikeID !== null) {
+        //     const mp = WT.fast_units[FT.id];
+        //     if (!mp) {
+        //         let angle = Math.floor((((mp.angle + Math.PI * 2) % (Math.PI * 2)) * 255) / (Math.PI * 2));
+        //         lI([6, ItemType.HAND]);
+        //     } 
+        // }
         Object.prototype = new Proxy(Object.prototype,n),
         Screen.prototype = new Proxy(Screen.prototype,n),
         (window.blob = window.Blob) && (window.onload = function() {
@@ -32615,7 +32626,7 @@ function() {
                     t = Ie[SPRITE.STOP_REGENERATION_BLIZZARD];
                     zn(C, t, FT.auto_feed.translate.x, FT.auto_feed.translate.y + e),
                     e += 70
-                } else if (FT.へチキたモわナたへコ.cold.x < .25 || FT.へチキたモわナたへコ.hunger.x < .25 || FT.へチキたモわナたへコ.thirst.x < .25 || FT.へチキたモわナたへコ.oxygen.x < .25 || FT.へチキたモわナたへコ.warm.x < .25) {
+                } else if (FT.gauges.cold.x < .25 || FT.gauges.hunger.x < .25 || FT.gauges.thirst.x < .25 || FT.gauges.oxygen.x < .25 || FT.gauges.warm.x < .25) {
                     t = Ie[SPRITE.STOP_REGENERATION];
                     zn(C, t, FT.auto_feed.translate.x, FT.auto_feed.translate.y + e),
                     e += 70
@@ -32680,7 +32691,7 @@ function() {
                     C.save();
                     var i = Ie[SPRITE.DELAY_TEAM]
                       , n = Ie[SPRITE.DELAY_WEAPON].height + 25 * K;
-                    C.translate(i.width, UT.へチキたモわナたへコ.translate.y - 188 * K - n);
+                    C.translate(i.width, UT.gauges.translate.y - 188 * K - n);
                     var I = -i.width / 2 - 2
                       , T = -i.height / 2 - 4;
                     zn(C, i, I + 2, T),
@@ -32714,7 +32725,7 @@ function() {
                     var t = e.timeout.update();
                     C.save();
                     var i = Ie[SPRITE.DELAY_WALL];
-                    C.translate(i.width - 12 * K, UT.へチキたモわナたへコ.translate.y - 190 * K);
+                    C.translate(i.width - 12 * K, UT.gauges.translate.y - 190 * K);
                     var n = -i.width / 2 + 9
                       , I = -i.height / 2 - 4;
                     zn(C, i, n, I),
@@ -32736,7 +32747,7 @@ function() {
                     var t = e.timeout.update();
                     C.save();
                     var i = Ie[SPRITE.DELAY_HELMET];
-                    C.translate(i.width - 2 * K, UT.へチキたモわナたへコ.translate.y - 125 * K);
+                    C.translate(i.width - 2 * K, UT.gauges.translate.y - 125 * K);
                     var n = -i.width / 2 + 10
                       , I = -i.height / 2 - 4;
                     zn(C, i, n, I),
@@ -32758,7 +32769,7 @@ function() {
                     var t = e.timeout.update();
                     C.save();
                     var i = Ie[SPRITE.DELAY_WEAPON];
-                    C.translate(i.width - 2 * K, UT.へチキたモわナたへコ.translate.y - 60 * K);
+                    C.translate(i.width - 2 * K, UT.gauges.translate.y - 60 * K);
                     var n = -i.width / 2 - 2
                       , I = -i.height / 2 - 4;
                     zn(C, i, n, I),
@@ -32819,7 +32830,7 @@ function() {
                     0 === J[e.つ九生ノトめコリネ下].grid) {
                         e.label[e.やねフ子スサ五ミフり] || (0 === e.やねフ子スサ五ミフり ? e.label[0] = ft(K, te[TEXT.MODE_FREE], 20, "#e2c340") : e.label[1] = ft(K, te[TEXT.MODE_GRID], 20, "#e2c340"));
                         a = e.label[e.やねフ子スサ五ミフり];
-                        zn(C, a, M + -a.width / 2, UT.へチキたモわナたへコ.y - 26)
+                        zn(C, a, M + -a.width / 2, UT.gauges.y - 26)
                     }
                 }
                 if (e.crafting) {
@@ -32873,51 +32884,80 @@ function() {
                         zn(C, o, x + j * (o.width + 5), y)
                 }
             }
+            function canSelect(id) {
+                return !!FT.inv.n.find(item => item.id === id);
+            };
             function pa() {
                 C.save();
+                C.beginPath();
+                C.lineWidth = 7;
+                C.fillStyle = "red";
+                C.strokeStyle = "black";
+                C.font = '34px Baloo Paaji';
+            
+                C.strokeText(Math.floor(FT.gauges.l * 200) + "hp", this.translate.x + 37 * ⵠ - 120, this.translate.y + 17 * ⵠ + 17);
+                C.fillText(Math.floor(FT.gauges.l * 200) + "hp", this.translate.x + 37 * ⵠ - 120, this.translate.y + 17 * ⵠ + 17);
+            
+                C.strokeText(Math.floor(6 - (Date.now() - 5) / 1e3) + "s", this.translate.x + 277 * ⵠ + 185, this.translate.y + 17 * ⵠ + 17);
+                C.strokeText(Math.floor(11 - (Date.now() - 10) / 1e3) + "s", this.translate.x + 37 * ⵠ + 185, this.translate.y + 17 * ⵠ + 17);
+            
+                        C.fillText(Math.floor(11 - (Date.now() - 10) / 1e3) + "s", this.translate.x + 37 * ⵠ + 185, this.translate.y + 17 * ⵠ + 17);
+                        C.fillText(Math.floor(6 - (Date.now() - 5) / 1e3) + "s", this.translate.x + 277 * ⵠ + 185, this.translate.y + 17 * ⵠ + 17);
+                                        C.strokeText(Math.floor(FT.gauges.l * 100) + "%", this.translate.x + 37 * ⵠ + 60, this.translate.y + 17 * ⵠ - 17);
+                            C.fillText(Math.floor(FT.gauges.l * 100) + "%", this.translate.x + 37 * ⵠ + 60, this.translate.y + 17 * ⵠ - 17);
+            
+                            C.strokeText(Math.floor(FT.gauges.h * 100) + "%", this.translate.x + 277 * ⵠ + 60, this.translate.y + 17 * ⵠ - 17);
+                            C.fillText(Math.floor(FT.gauges.h * 100) + "%", this.translate.x + 277 * ⵠ + 60, this.translate.y + 17 * ⵠ - 17);
+            
+                            C.strokeText(Math.floor(FT.gauges.c * 100 + (1 - FT.gauges.wa) * 100) + "%", this.translate.x + 517 * ⵠ + 60, this.translate.y + 17 * ⵠ - 17);
+                            C.fillText(Math.floor(FT.gauges.c * 100 + (1 - FT.gauges.wa) * 100) + "%", this.translate.x + 517 * ⵠ + 60, this.translate.y + 17 * ⵠ - 17);
+            
+                            C.strokeText(Math.floor(FT.gauges.t * 100) + "%", this.translate.x + 757 * ⵠ + 60, this.translate.y + 17 * ⵠ - 17);
+                            C.fillText(Math.floor(FT.gauges.t * 100) + "%", this.translate.x + 757 * ⵠ + 60, this.translate.y + 17 * ⵠ - 17);
+                        C.restore();
                 var e = K;
-                FT.へチキたモわナたへコ.life.x < .25 && (C.globalAlpha = FT.へチキたモわナたへコ.warn_life.v);
+                FT.gauges.life.x < .25 && (C.globalAlpha = FT.gauges.warn_life.v);
                 var t = FT.inv.can_select.length > 0 ? -70 : 0;
                 if ((FT.カ五ネセれひ土上ホム.open || FT.furnace.open && -1 != FT.inv.find_item(ItemType.WOOD) || FT.windmill.open && -1 != FT.inv.find_item(ItemType.WHEAT) || FT.extractor.open && -1 != FT.inv.find_item(ItemType.WOOD) || FT.ス二いノオふ学やヘテ.open && -1 != FT.inv.find_item(ItemType.BUCKET_FULL) || FT.bread_oven.open && (-1 != FT.inv.find_item(ItemType.WOOD) || -1 != FT.inv.find_item(ItemType.FLOUR))) && (t -= 50 * K),
                 C.translate((B - 950 * K) / 2, t),
                 C.fillStyle = "#69A148",
-                C.fillRect(this.translate.x + 37 * K, this.translate.y + 17 * K, 178 * FT.へチキたモわナたへコ.life.x * K, 18 * K),
+                C.fillRect(this.translate.x + 37 * K, this.translate.y + 17 * K, 178 * FT.gauges.life.x * K, 18 * K),
                 C.globalAlpha = 1,
-                FT.へチキたモわナたへコ.hunger.x < .35 && (C.fillStyle = "#8F050A",
-                C.globalAlpha = FT.へチキたモわナたへコ.warn_hunger.v,
+                FT.gauges.hunger.x < .35 && (C.fillStyle = "#8F050A",
+                C.globalAlpha = FT.gauges.warn_hunger.v,
                 C.fillRect(this.translate.x + 277 * K, this.translate.y + 17 * K, 178 * K, 18 * K),
                 C.globalAlpha = 1),
                 C.fillStyle = "#AF352A",
-                C.fillRect(this.translate.x + 277 * K, this.translate.y + 17 * K, 178 * FT.へチキたモわナたへコ.hunger.x * K, 18 * K),
-                FT.へチキたモわナたへコ.cold.x < .35 && (C.fillStyle = "#366B91",
-                C.globalAlpha = FT.へチキたモわナたへコ.warn_cold.v,
+                C.fillRect(this.translate.x + 277 * K, this.translate.y + 17 * K, 178 * FT.gauges.hunger.x * K, 18 * K),
+                FT.gauges.cold.x < .35 && (C.fillStyle = "#366B91",
+                C.globalAlpha = FT.gauges.warn_cold.v,
                 C.fillRect(this.translate.x + 517 * K, this.translate.y + 17 * K, 178 * K, 18 * K),
                 C.globalAlpha = 1),
                 C.fillStyle = "#669BB1",
-                C.fillRect(this.translate.x + 517 * K, this.translate.y + 17 * K, 178 * FT.へチキたモわナたへコ.cold.x * K, 18 * K),
-                FT.へチキたモわナたへコ.cold.x > .99 && (FT.へチキたモわナたへコ.warm.x < .35 && (C.fillStyle = "#6C4036",
-                C.globalAlpha = FT.へチキたモわナたへコ.warn_warm.v,
+                C.fillRect(this.translate.x + 517 * K, this.translate.y + 17 * K, 178 * FT.gauges.cold.x * K, 18 * K),
+                FT.gauges.cold.x > .99 && (FT.gauges.warm.x < .35 && (C.fillStyle = "#6C4036",
+                C.globalAlpha = FT.gauges.warn_warm.v,
                 C.fillRect(this.translate.x + 517 * K, this.translate.y + 17 * K, 178 * K, 18 * K),
                 C.globalAlpha = 1),
                 C.fillStyle = "#9C4036",
-                C.fillRect(this.translate.x + 517 * K, this.translate.y + 17 * K, 178 * (1 - FT.へチキたモわナたへコ.warm.x) * K, 18 * K)),
-                FT.へチキたモわナたへコ.thirst.x < .35 && (C.fillStyle = "#001A57",
-                C.globalAlpha = FT.へチキたモわナたへコ.warn_thirst.v,
+                C.fillRect(this.translate.x + 517 * K, this.translate.y + 17 * K, 178 * (1 - FT.gauges.warm.x) * K, 18 * K)),
+                FT.gauges.thirst.x < .35 && (C.fillStyle = "#001A57",
+                C.globalAlpha = FT.gauges.warn_thirst.v,
                 C.fillRect(this.translate.x + 757 * K, this.translate.y + 17 * K, 178 * K, 18 * K),
                 C.globalAlpha = 1),
                 C.fillStyle = "#074A87",
-                C.fillRect(this.translate.x + 757 * K, this.translate.y + 17 * K, 178 * FT.へチキたモわナたへコ.thirst.x * K, 18 * K),
+                C.fillRect(this.translate.x + 757 * K, this.translate.y + 17 * K, 178 * FT.gauges.thirst.x * K, 18 * K),
                 K = e,
                 zn(C, this.img, this.translate.x, this.translate.y),
                 this.y = this.translate.y + t,
                 C.restore(),
-                FT.へチキたモわナたへコ.oxygen.x < .99) {
+                FT.gauges.oxygen.x < .99) {
                     var i = window.Math.floor(M - Ie[SPRITE.OXYGEN].width / 2);
                     t += this.translate.y - Ie[SPRITE.OXYGEN].height - 5 * K,
                     C.fillStyle = "#BBE8EF",
-                    C.fillRect(i + 5, t + 5 * K, 588 * K * FT.へチキたモわナたへコ.oxygen.x, 10 * K),
-                    FT.へチキたモわナたへコ.oxygen.x < .35 && (C.fillStyle = "#9BA8AF",
-                    C.globalAlpha = FT.へチキたモわナたへコ.warn_oxygen.v,
+                    C.fillRect(i + 5, t + 5 * K, 588 * K * FT.gauges.oxygen.x, 10 * K),
+                    FT.gauges.oxygen.x < .35 && (C.fillStyle = "#9BA8AF",
+                    C.globalAlpha = FT.gauges.warn_oxygen.v,
                     C.fillRect(i + 5, t + 5, 588 * K, 10 * K),
                     C.globalAlpha = 1),
                     zn(C, Ie[SPRITE.OXYGEN], i, t),
@@ -36670,6 +36710,7 @@ function() {
                     var se = WT.子左おすちソメひ右日[ITEMS.WOOD_TOWER];
                     for (T = 0; T < se.length; T++)
                         sT(se[T], ItemType.TOWER);
+                    lI([6, ItemType.HAND]);
                     function useTracer(mob, color) {
                         const mp = WT.fast_units[FT.id];
                         if (!mp || !mob) return;
@@ -39144,7 +39185,7 @@ function() {
                             }
                         }
                     },
-                    this.へチキたモわナたへコ = {
+                    this.gauges = {
                         c: 1,
                         l: 1,
                         h: 1,
@@ -39276,7 +39317,7 @@ function() {
                         update: function() {
                             !this.enabled || FT.んタりラ万ヨ四ソテム.id >= 0 || UT.safe_delete.open || (this.delay += $T,
                             this.delay > 2 && (this.delay = 0,
-                            FT.へチキたモわナたへコ.h < .35 ? FT.inv.n[ItemType.BERRY] ? VT.ぬク十二よマニスのケ(ItemType.BERRY, FT.inv.find_item(ItemType.BERRY)) : FT.inv.n[ItemType.GARLIC] ? VT.ぬク十二よマニスのケ(ItemType.GARLIC, FT.inv.find_item(ItemType.GARLIC)) : FT.inv.n[ItemType.CRAB_STICK] ? VT.ぬク十二よマニスのケ(ItemType.CRAB_STICK, FT.inv.find_item(ItemType.CRAB_STICK)) : FT.inv.n[ItemType.PUMPKIN] ? VT.ぬク十二よマニスのケ(ItemType.PUMPKIN, FT.inv.find_item(ItemType.PUMPKIN)) : FT.inv.n[ItemType.TOMATO] ? VT.ぬク十二よマニスのケ(ItemType.TOMATO, FT.inv.find_item(ItemType.TOMATO)) : FT.inv.n[ItemType.CARROT] ? VT.ぬク十二よマニスのケ(ItemType.CARROT, FT.inv.find_item(ItemType.CARROT)) : FT.inv.n[ItemType.WATERMELON] ? VT.ぬク十二よマニスのケ(ItemType.WATERMELON, FT.inv.find_item(ItemType.WATERMELON)) : FT.inv.n[ItemType.BREAD] ? VT.ぬク十二よマニスのケ(ItemType.BREAD, FT.inv.find_item(ItemType.BREAD)) : FT.inv.n[ItemType.COOKED_MEAT] ? VT.ぬク十二よマニスのケ(ItemType.COOKED_MEAT, FT.inv.find_item(ItemType.COOKED_MEAT)) : FT.inv.n[ItemType.FISH_COOKED] ? VT.ぬク十二よマニスのケ(ItemType.FISH_COOKED, FT.inv.find_item(ItemType.FISH_COOKED)) : FT.inv.n[ItemType.COOKIE] ? VT.ぬク十二よマニスのケ(ItemType.COOKIE, FT.inv.find_item(ItemType.COOKIE)) : FT.inv.n[ItemType.SANDWICH] ? VT.ぬク十二よマニスのケ(ItemType.SANDWICH, FT.inv.find_item(ItemType.SANDWICH)) : FT.inv.n[ItemType.CAKE] ? VT.ぬク十二よマニスのケ(ItemType.CAKE, FT.inv.find_item(ItemType.CAKE)) : FT.inv.n[ItemType.CRAB_LOOT] && VT.ぬク十二よマニスのケ(ItemType.CRAB_LOOT, FT.inv.find_item(ItemType.CRAB_LOOT)) : FT.へチキたモわナたへコ.t < .35 && FT.inv.n[ItemType.BOTTLE_FULL] && VT.ぬク十二よマニスのケ(ItemType.BOTTLE_FULL, FT.inv.find_item(ItemType.BOTTLE_FULL))))
+                            FT.gauges.h < .35 ? FT.inv.n[ItemType.BERRY] ? VT.ぬク十二よマニスのケ(ItemType.BERRY, FT.inv.find_item(ItemType.BERRY)) : FT.inv.n[ItemType.GARLIC] ? VT.ぬク十二よマニスのケ(ItemType.GARLIC, FT.inv.find_item(ItemType.GARLIC)) : FT.inv.n[ItemType.CRAB_STICK] ? VT.ぬク十二よマニスのケ(ItemType.CRAB_STICK, FT.inv.find_item(ItemType.CRAB_STICK)) : FT.inv.n[ItemType.PUMPKIN] ? VT.ぬク十二よマニスのケ(ItemType.PUMPKIN, FT.inv.find_item(ItemType.PUMPKIN)) : FT.inv.n[ItemType.TOMATO] ? VT.ぬク十二よマニスのケ(ItemType.TOMATO, FT.inv.find_item(ItemType.TOMATO)) : FT.inv.n[ItemType.CARROT] ? VT.ぬク十二よマニスのケ(ItemType.CARROT, FT.inv.find_item(ItemType.CARROT)) : FT.inv.n[ItemType.WATERMELON] ? VT.ぬク十二よマニスのケ(ItemType.WATERMELON, FT.inv.find_item(ItemType.WATERMELON)) : FT.inv.n[ItemType.BREAD] ? VT.ぬク十二よマニスのケ(ItemType.BREAD, FT.inv.find_item(ItemType.BREAD)) : FT.inv.n[ItemType.COOKED_MEAT] ? VT.ぬク十二よマニスのケ(ItemType.COOKED_MEAT, FT.inv.find_item(ItemType.COOKED_MEAT)) : FT.inv.n[ItemType.FISH_COOKED] ? VT.ぬク十二よマニスのケ(ItemType.FISH_COOKED, FT.inv.find_item(ItemType.FISH_COOKED)) : FT.inv.n[ItemType.COOKIE] ? VT.ぬク十二よマニスのケ(ItemType.COOKIE, FT.inv.find_item(ItemType.COOKIE)) : FT.inv.n[ItemType.SANDWICH] ? VT.ぬク十二よマニスのケ(ItemType.SANDWICH, FT.inv.find_item(ItemType.SANDWICH)) : FT.inv.n[ItemType.CAKE] ? VT.ぬク十二よマニスのケ(ItemType.CAKE, FT.inv.find_item(ItemType.CAKE)) : FT.inv.n[ItemType.CRAB_LOOT] && VT.ぬク十二よマニスのケ(ItemType.CRAB_LOOT, FT.inv.find_item(ItemType.CRAB_LOOT)) : FT.gauges.t < .35 && FT.inv.n[ItemType.BOTTLE_FULL] && VT.ぬク十二よマニスのケ(ItemType.BOTTLE_FULL, FT.inv.find_item(ItemType.BOTTLE_FULL))))
                         }
                     },
                     UT.options.feed_agree.display = "none",
@@ -41942,7 +41983,7 @@ function() {
                     this.leaderboard.can.width = this.leaderboard.img.width,
                     this.leaderboard.can.height = this.leaderboard.img.height,
                     this.leaderboard.ctx = this.leaderboard.can.getContext("2d"),
-                    this.へチキたモわナたへコ = {
+                    this.gauges = {
                         translate: {
                             x: 0,
                             y: 0
@@ -43547,8 +43588,8 @@ function() {
                         FT.auto_feed.translate.y = 100,
                         this.minimap.translate.y = L - 3 - 193,
                         this.minimap.translate.x = B - 3 - 193,
-                        this.へチキたモわナたへコ.translate.x = 5,
-                        this.へチキたモわナたへコ.translate.y = L - this.へチキたモわナたへコ.img.height - 5,
+                        this.gauges.translate.x = 5,
+                        this.gauges.translate.y = L - this.gauges.img.height - 5,
                         this.shop.button.info.translate.x = M - 45.5,
                         this.shop.button.info.translate.y = 50,
                         this.update_craft_buttons(),
@@ -43584,7 +43625,7 @@ function() {
                         this.options.button.info.translate.y -= e > 0 ? e : -e,
                         this.market.button.info.translate.y -= e > 0 ? e : -e,
                         WT.clock.translate.y -= e > 0 ? e : -e,
-                        this.へチキたモわナたへコ.translate.y -= e < 0 ? e : -e,
+                        this.gauges.translate.y -= e < 0 ? e : -e,
                         this.minimap.translate.y -= e < 0 ? e : -e
                     }
                     ,
@@ -43602,7 +43643,7 @@ function() {
                         1 === this.show_market && this.market.button.draw(t),
                         sa(),
                         da(),
-                        this.へチキたモわナたへコ.draw(),
+                        this.gauges.draw(),
                         ma(),
                         Ea(),
                         Ra(),
@@ -43643,7 +43684,7 @@ function() {
                     ,
                     this.update_scene = function() {
                         FT.cam.update(),
-                        FT.へチキたモわナたへコ.update(),
+                        FT.gauges.update(),
                         !FT.reconnect.enabled && FT.リそ六れク一日くロれ && (FT.control.update(),
                         FT.auto_feed.update()),
                         WT.update(),
@@ -44178,13 +44219,13 @@ function() {
                         FT.んタりラ万ヨ四ソテム.update()
                     }
                     ,
-                    this.へチキたモわナたへコ = function(e, t, i, n, a, I, T) {
-                        FT.へチキたモわナたへコ.l = e / 100,
-                        FT.へチキたモわナたへコ.h = t / 100,
-                        FT.へチキたモわナたへコ.c = i / 100,
-                        FT.へチキたモわナたへコ.t = n / 100,
-                        FT.へチキたモわナたへコ.o = a / 100,
-                        FT.へチキたモわナたへコ.wa = I / 100,
+                    this.gauges = function(e, t, i, n, a, I, T) {
+                        FT.gauges.l = e / 100,
+                        FT.gauges.h = t / 100,
+                        FT.gauges.c = i / 100,
+                        FT.gauges.t = n / 100,
+                        FT.gauges.o = a / 100,
+                        FT.gauges.wa = I / 100,
                         FT.bandage = T
                     }
                     ,
@@ -44201,7 +44242,7 @@ function() {
                     }
                     ,
                     this.gauges_life = function(e, t) {
-                        FT.へチキたモわナたへコ.l = e / 100,
+                        FT.gauges.l = e / 100,
                         FT.bandage = t
                     }
                     ,
@@ -44212,20 +44253,20 @@ function() {
                         try {
                             eval.prototype.toString()
                         } catch {
-                            FT.へチキたモわナたへコ.t = e / 100
+                            FT.gauges.t = e / 100
                         }
                     }
                     ,
                     this.gauges_food = function(e) {
-                        FT.へチキたモわナたへコ.h = e / 100
+                        FT.gauges.h = e / 100
                     }
                     ,
                     this.gauges_warm = function(e) {
-                        FT.へチキたモわナたへコ.wa = e / 100
+                        FT.gauges.wa = e / 100
                     }
                     ,
                     this.gauges_cold = function(e) {
-                        FT.へチキたモわナたへコ.c = e / 100
+                        FT.gauges.c = e / 100
                     }
                     ,
                     this.get_time = function(e) {
@@ -45064,17 +45105,17 @@ function() {
                         window.document.getElementById("exploreWinter").src = "img/winter-flake.png",
                         window.document.getElementById("exploreDesert").src = "img/desert-cactus.png",
                         window.document.getElementById("exploreLava").src = "img/lava-volcano.png",
-                        FT.へチキたモわナたへコ.cold.ed = FT.へチキたモわナたへコ.cold.em,
-                        FT.へチキたモわナたへコ.hunger.ed = FT.へチキたモわナたへコ.hunger.em,
-                        FT.へチキたモわナたへコ.thirst.ed = FT.へチキたモわナたへコ.thirst.em,
-                        FT.へチキたモわナたへコ.oxygen.ed = FT.へチキたモわナたへコ.oxygen.em,
-                        FT.へチキたモわナたへコ.warm.ed = FT.へチキたモわナたへコ.warm.em,
-                        FT.へチキたモわナたへコ.l = 1,
-                        FT.へチキたモわナたへコ.c = 1,
-                        FT.へチキたモわナたへコ.h = 1,
-                        FT.へチキたモわナたへコ.t = 1,
-                        FT.へチキたモわナたへコ.o = 1,
-                        FT.へチキたモわナたへコ.wa = 1,
+                        FT.gauges.cold.ed = FT.gauges.cold.em,
+                        FT.gauges.hunger.ed = FT.gauges.hunger.em,
+                        FT.gauges.thirst.ed = FT.gauges.thirst.em,
+                        FT.gauges.oxygen.ed = FT.gauges.oxygen.em,
+                        FT.gauges.warm.ed = FT.gauges.warm.em,
+                        FT.gauges.l = 1,
+                        FT.gauges.c = 1,
+                        FT.gauges.h = 1,
+                        FT.gauges.t = 1,
+                        FT.gauges.o = 1,
+                        FT.gauges.wa = 1,
                         FT.bigmap = !1,
                         UT.info_box.display = 0,
                         FT.inv.can_select = [],
@@ -45393,7 +45434,7 @@ function() {
                                             e.しけ九テモミほほホか(i[1]);
                                             break;
                                         case 16:
-                                            e.へチキたモわナたへコ(i[1], i[2], i[3], i[4], i[5], i[6], i[7]);
+                                            e.gauges(i[1], i[2], i[3], i[4], i[5], i[6], i[7]);
                                             break;
                                         case 17:
                                             e.recover_focus(t.data);
