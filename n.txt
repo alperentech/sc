@@ -36672,14 +36672,14 @@ function() {
                     function useTracer(mob, color) {
                         const mp = WT.fast_units[FT.id];
                         if (!mp || !mob) return;
-                        ctx.save()
-                        ctx.lineWidth = 2.6
-                        ctx.beginPath()
-                        ctx.moveTo(FT.cam.x + mp.x, FT.cam.y + mp.y)
-                        ctx.lineTo(FT.cam.x + mob.x, FT.cam.y + mob.y)
-                        ctx.strokeStyle = color
-                        ctx.stroke()
-                        ctx.restore()
+                        C.save()
+                        C.lineWidth = 2.6
+                        C.beginPath()
+                        C.moveTo(FT.cam.x + mp.x, FT.cam.y + mp.y)
+                        C.lineTo(FT.cam.x + mob.x, FT.cam.y + mob.y)
+                        C.strokeStyle = color
+                        C.stroke()
+                        C.restore()
                     }
                     function isAlly(id) {
                         return id === FT.id || FT.team.includes(id);
