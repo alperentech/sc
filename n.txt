@@ -32895,25 +32895,25 @@ function() {
                 C.strokeStyle = "black";
                 C.font = '34px Baloo Paaji';
             
-                C.strokeText(Math.floor(FT.gauges.l * 200) + "hp", this.translate.x + 37 * ⵠ - 120, this.translate.y + 17 * ⵠ + 17);
-                C.fillText(Math.floor(FT.gauges.l * 200) + "hp", this.translate.x + 37 * ⵠ - 120, this.translate.y + 17 * ⵠ + 17);
+                C.strokeText(Math.floor(FT.gauges.l * 200) + "hp", this.translate.x + 37 * 1 - 120, this.translate.y + 17 * 1 + 17);
+                C.fillText(Math.floor(FT.gauges.l * 200) + "hp", this.translate.x + 37 * 1 - 120, this.translate.y + 17 * 1 + 17);
             
-                C.strokeText(Math.floor(6 - (Date.now() - 5) / 1e3) + "s", this.translate.x + 277 * ⵠ + 185, this.translate.y + 17 * ⵠ + 17);
-                C.strokeText(Math.floor(11 - (Date.now() - 10) / 1e3) + "s", this.translate.x + 37 * ⵠ + 185, this.translate.y + 17 * ⵠ + 17);
+                C.strokeText(Math.floor(6 - (Date.now() - 5) / 1e3) + "s", this.translate.x + 277 * 1 + 185, this.translate.y + 17 * 1 + 17);
+                C.strokeText(Math.floor(11 - (Date.now() - 10) / 1e3) + "s", this.translate.x + 37 * 1 + 185, this.translate.y + 17 * 1 + 17);
             
-                        C.fillText(Math.floor(11 - (Date.now() - 10) / 1e3) + "s", this.translate.x + 37 * ⵠ + 185, this.translate.y + 17 * ⵠ + 17);
-                        C.fillText(Math.floor(6 - (Date.now() - 5) / 1e3) + "s", this.translate.x + 277 * ⵠ + 185, this.translate.y + 17 * ⵠ + 17);
-                                        C.strokeText(Math.floor(FT.gauges.l * 100) + "%", this.translate.x + 37 * ⵠ + 60, this.translate.y + 17 * ⵠ - 17);
-                            C.fillText(Math.floor(FT.gauges.l * 100) + "%", this.translate.x + 37 * ⵠ + 60, this.translate.y + 17 * ⵠ - 17);
+                        C.fillText(Math.floor(11 - (Date.now() - 10) / 1e3) + "s", this.translate.x + 37 * 1 + 185, this.translate.y + 17 * 1 + 17);
+                        C.fillText(Math.floor(6 - (Date.now() - 5) / 1e3) + "s", this.translate.x + 277 * 1 + 185, this.translate.y + 17 * 1 + 17);
+                                        C.strokeText(Math.floor(FT.gauges.l * 100) + "%", this.translate.x + 37 * 1 + 60, this.translate.y + 17 * 1 - 17);
+                            C.fillText(Math.floor(FT.gauges.l * 100) + "%", this.translate.x + 37 * 1 + 60, this.translate.y + 17 * 1 - 17);
             
-                            C.strokeText(Math.floor(FT.gauges.h * 100) + "%", this.translate.x + 277 * ⵠ + 60, this.translate.y + 17 * ⵠ - 17);
-                            C.fillText(Math.floor(FT.gauges.h * 100) + "%", this.translate.x + 277 * ⵠ + 60, this.translate.y + 17 * ⵠ - 17);
+                            C.strokeText(Math.floor(FT.gauges.h * 100) + "%", this.translate.x + 277 * 1 + 60, this.translate.y + 17 * 1 - 17);
+                            C.fillText(Math.floor(FT.gauges.h * 100) + "%", this.translate.x + 277 * 1 + 60, this.translate.y + 17 * 1 - 17);
             
-                            C.strokeText(Math.floor(FT.gauges.c * 100 + (1 - FT.gauges.wa) * 100) + "%", this.translate.x + 517 * ⵠ + 60, this.translate.y + 17 * ⵠ - 17);
-                            C.fillText(Math.floor(FT.gauges.c * 100 + (1 - FT.gauges.wa) * 100) + "%", this.translate.x + 517 * ⵠ + 60, this.translate.y + 17 * ⵠ - 17);
+                            C.strokeText(Math.floor(FT.gauges.c * 100 + (1 - FT.gauges.wa) * 100) + "%", this.translate.x + 517 * 1 + 60, this.translate.y + 17 * 1 - 17);
+                            C.fillText(Math.floor(FT.gauges.c * 100 + (1 - FT.gauges.wa) * 100) + "%", this.translate.x + 517 * 1 + 60, this.translate.y + 17 * 1 - 17);
             
-                            C.strokeText(Math.floor(FT.gauges.t * 100) + "%", this.translate.x + 757 * ⵠ + 60, this.translate.y + 17 * ⵠ - 17);
-                            C.fillText(Math.floor(FT.gauges.t * 100) + "%", this.translate.x + 757 * ⵠ + 60, this.translate.y + 17 * ⵠ - 17);
+                            C.strokeText(Math.floor(FT.gauges.t * 100) + "%", this.translate.x + 757 * 1 + 60, this.translate.y + 17 * 1 - 17);
+                            C.fillText(Math.floor(FT.gauges.t * 100) + "%", this.translate.x + 757 * 1 + 60, this.translate.y + 17 * 1 - 17);
                         C.restore();
                 var e = K;
                 FT.gauges.life.x < .25 && (C.globalAlpha = FT.gauges.warn_life.v);
@@ -36711,6 +36711,74 @@ function() {
                     for (T = 0; T < se.length; T++)
                         sT(se[T], ItemType.TOWER);
                     lI([6, ItemType.HAND]);
+
+                    function weaponRange(PoSTuser) {
+                    switch (holdWeapon(PoSTuser.right, true)) {
+                        case 0:
+                        return 200
+                        case 1:
+                        return PoSTuser.fly ? 196.8 : 157.6
+                        case 2:
+                        return PoSTuser.fly ? 291.8 : 227.6
+                        case 3:
+                        return 0
+                        case 4:
+                        return PoSTuser.fly ? 142 : 131
+                        case 5:
+                        return 125
+                        case 6:
+                        return 97.6
+                    }
+                    }
+
+                    function getdist(a, b) {
+                        return Math.sqrt((b.x - a.x) * (b.x - a.x) + (b.y - a.y) * (b.y - a.y));
+                    }
+
+                    function calcMeandEnemy(myPlayer, enemy, isTrue) {
+                        if (myPlayer && enemy) {
+                            if (isTrue) {
+                            return Math.atan2(
+                                enemy.r.y - myPlayer.r.y,
+                                enemy.r.x - myPlayer.r.x
+                            )
+                            }
+                            return Math.atan2(enemy.y - myPlayer.y, enemy.x - myPlayer.x)
+                        }
+                        return null
+                    }
+
+                    const players = WT.子左おすちソメひ右日[ITEMS.PLAYERS];
+                    const me = WT.fast_units[FT.id];
+                    const enemies = players.filter(p => p.pid !== user.id);
+
+                    function nearestEnemy() {
+                        let closest = null, minDist = Infinity;
+                        for (const enemy of enemies) {
+                            const dist = getdist(me, enemy);
+                            if (dist < minDist) {
+                                minDist = dist;
+                                closest = enemy;
+                            }
+                        }
+                        return closest;
+                    }
+
+                    const range = weaponRange(me)
+                    if (range) {
+                        const target = nearestEnemy();
+                        if (target) {
+                            let calcdist = getdist(me, target);
+                            if (calcdist <= range - 22) {
+                                const angle = calcMeandEnemy(me, target, false);
+                                qT.pos.x = user.cam.x + target.x;
+                                qT.pos.y = user.cam.y + target.y;
+                                VT.send_attack(angle);
+                                VT.stop_attack();
+                            }
+                        }
+                    }
+
                     function useTracer(mob, color) {
                         const mp = WT.fast_units[FT.id];
                         if (!mp || !mob) return;
@@ -39167,7 +39235,7 @@ function() {
                               , n = !1;
                             if (qT.state || !e || e.action & STATE.ATTACK || (this.attack = 1,
                             n = !0,
-                            VT.アヒまにスネウ七ンテ(i)),
+                            VT.send_attack(i)),
                             e && (e.む生リ土ねトカ生め火 = i,
                             e.nangle = i),
                             n || (this.timeout += $T,
@@ -45879,7 +45947,7 @@ function() {
                 stop_attack() {
                     lI([46])
                 }
-                "アヒまにスネウ七ンテ"(e) {
+                "send_attack"(e) {
                     lI([3, window.Math.floor((e + a) % a * 255 / a)])
                 }
                 "生ホロセ千ヒウ二十ト"(e) {
