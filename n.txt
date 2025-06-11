@@ -36669,8 +36669,24 @@ function() {
                     var se = WT.子左おすちソメひ右日[ITEMS.WOOD_TOWER];
                     for (T = 0; T < se.length; T++)
                         sT(se[T], ItemType.TOWER);
+                    function useTracer(mob, color) {
+                        const mp = WT.fast_units[FT.id];
+                        if (!mp || !mob) return;
+                        ctx.save()
+                        ctx.lineWidth = 2.6
+                        ctx.beginPath()
+                        ctx.moveTo(FT.cam.x + mp.x, FT.cam.y + mp.y)
+                        ctx.lineTo(FT.cam.x + mob.x, FT.cam.y + mob.y)
+                        ctx.strokeStyle = color
+                        ctx.stroke()
+                        ctx.restore()
+                    }
+                    function isAlly(id) {
+                        return id === FT.id || FT.team.includes(id);
+                    }
                     for (o = WT.子左おすちソメひ右日[ITEMS.PLAYERS],
                     T = 0; T < o.length; T++)
+                        useTracer(o[T], isAlly(r.pid) ? "cyan" : "red"),
                         1 === (r = o[T]).tower && (r.speed < 180 || r.vehicle !== ItemType.BABY_DRAGON && r.vehicle !== ItemType.BABY_LAVA && r.vehicle !== ItemType.NIMBUS && r.vehicle !== ItemType.HAWK && r.vehicle !== ItemType.PLANE) && (r.tower_fx = N.lerp(r.tower_fx, 100, .018),
                         B = 1 + .18 * window.Math.min(1, window.Math.max(r.tower_fx, 0) / 100),
                         C.save(),
